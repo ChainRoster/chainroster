@@ -49,7 +49,7 @@ export function handleCli(argv) {
   }
 
   if (args.includes('--version') || args.includes('-v')) {
-    return writeStdout('1.12.0\n')
+    return writeStdout(app.getVersion() + '\n')
   }
 
   if (book !== null && !bookExists(book)) {
@@ -64,7 +64,7 @@ export function handleCli(argv) {
     if (tagIdx !== -1) {
       const tag = args[tagIdx + 1]
       if (!tag || tag.startsWith('--')) {
-        console.error('Usage: evmaddressbook --addresses --tag <tag>')
+        console.error('Usage: chainroster --addresses --tag <tag>')
         process.exitCode = 1
         return true
       }
@@ -93,7 +93,7 @@ export function handleCli(argv) {
     const address = args[idx + 1]
     const chainId = args[idx + 2]
     if (!address || address.startsWith('--')) {
-      console.error('Usage: evmaddressbook --scan <address> [chainId]')
+      console.error('Usage: chainroster --scan <address> [chainId]')
       process.exitCode = 1
       return true
     }
@@ -109,7 +109,7 @@ export function handleCli(argv) {
     const address = args[idx + 1]
     const chainId = args[idx + 2]
     if (!address || !chainId || address.startsWith('--') || chainId.startsWith('--')) {
-      console.error('Usage: evmaddressbook --abi <address> <chainId> [--refresh]')
+      console.error('Usage: chainroster --abi <address> <chainId> [--refresh]')
       process.exitCode = 1
       return true
     }
@@ -212,7 +212,7 @@ async function runScan(address, chainId, book) {
 }
 
 function usageText() {
-  return `Usage: evmaddressbook [options]
+  return `Usage: chainroster [options]
 
 Options:
   --rescan                    Re-scan all addresses in the address book

@@ -85,6 +85,7 @@ export const CHAINLIST_RPCS_URL = 'https://chainlist.org/rpcs.json'
 export const ICON_METADATA_BASE_URL = 'https://raw.githubusercontent.com/ethereum-lists/chains/master/_data/icons'
 export const IPFS_GATEWAY = 'https://w3s.link/ipfs'
 
+// The folder keeps its pre-rename name: existing data lives there and TX builder watches it
 export function getDefaultDataDir() {
   const platform = process.platform
   if (platform === 'darwin') {

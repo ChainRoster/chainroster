@@ -13,6 +13,9 @@ if (isCliMode && process.platform === 'linux') {
   app.commandLine.appendSwitch('disable-features', 'VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,SystemdUnitScope')
 }
 
+// Keep Chromium's userData (localStorage) in the pre-rename folder so it survives the ChainRoster rename
+app.setPath('userData', path.join(app.getPath('appData'), app.isPackaged ? 'EVM Address Book' : 'evmaddressbook'))
+
 let mainWindow
 
 function createWindow() {
@@ -33,7 +36,7 @@ function createWindow() {
       nodeIntegration: false,
       zoomFactor
     },
-    title: 'EVM Address Book',
+    title: 'ChainRoster',
     backgroundColor: '#1a1a2e',
     icon: path.join(__dirname, '../../resources/icon.png')
   })

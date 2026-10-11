@@ -1,6 +1,6 @@
 import { app, Menu, dialog, BrowserWindow } from 'electron'
 
-const APP_NAME = 'EVM Address Book'
+const APP_NAME = 'ChainRoster'
 
 function showAbout() {
   const win = BrowserWindow.getFocusedWindow()

@@ -13,7 +13,7 @@ jobs:
       # so both are checked out side by side.
       - uses: actions/checkout@v5
         with:
-          path: evmaddressbook
+          path: chainroster
 
       - uses: actions/checkout@v5
         with:
@@ -25,7 +25,7 @@ jobs:
           node-version: 24
           cache: npm
           cache-dependency-path: |
-            evmaddressbook/package-lock.json
+            chainroster/package-lock.json
             evm-ui/package-lock.json
 
       - name: Build evm-ui
@@ -35,13 +35,13 @@ jobs:
           npm run build
 
       - name: Install dependencies
-        working-directory: evmaddressbook
+        working-directory: chainroster
         run: npm ci
 
       - name: Run tests
-        working-directory: evmaddressbook
+        working-directory: chainroster
         run: npm test
 
       - name: Build
-        working-directory: evmaddressbook
+        working-directory: chainroster
         run: npm run build
