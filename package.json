@@ -1,7 +1,15 @@
 {
-  "name": "evmaddressbook",
-  "version": "1.12.0",
+  "name": "chainroster",
+  "version": "1.13.0",
   "description": "Address book for EVM addresses with chain activity detection",
+  "homepage": "https://chainroster.org",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChainRoster/chainroster.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ChainRoster/chainroster/issues"
+  },
   "main": "./out/main/index.js",
   "scripts": {
     "dev": "electron-vite dev",
@@ -14,9 +22,9 @@
     "dist:win": "electron-vite build && electron-builder --win"
   },
   "build": {
-    "appId": "com.evmaddressbook.app",
-    "productName": "EVM Address Book",
-    "executableName": "evmaddressbook",
+    "appId": "org.chainroster.app",
+    "productName": "ChainRoster",
+    "executableName": "chainroster",
     "directories": {
       "output": "release"
     },
@@ -41,12 +49,17 @@
         "portable"
       ],
       "icon": "build/icon.ico"
+    },
+    "deb": {
+      "afterInstall": "build/linux/after-install.sh",
+      "afterRemove": "build/linux/after-remove.sh"
     }
   },
   "keywords": [],
   "author": {
-    "name": "EVM Address Book",
-    "email": "evmaddressbook@users.noreply.github.com"
+    "name": "ChainRoster",
+    "email": "chainroster@users.noreply.github.com",
+    "url": "https://chainroster.org"
   },
   "license": "ISC",
   "dependencies": {

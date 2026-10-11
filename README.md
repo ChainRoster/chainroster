@@ -1,12 +1,12 @@
-# EVM Address Book
+# ChainRoster
 
-[![CI](https://github.com/gearcat0/evmaddressbook/actions/workflows/ci.yml/badge.svg)](https://github.com/gearcat0/evmaddressbook/actions/workflows/ci.yml)
-[![Version](https://img.shields.io/github/package-json/v/gearcat0/evmaddressbook)](https://github.com/gearcat0/evmaddressbook/blob/master/package.json)
+[![CI](https://github.com/ChainRoster/chainroster/actions/workflows/ci.yml/badge.svg)](https://github.com/ChainRoster/chainroster/actions/workflows/ci.yml)
+[![Version](https://img.shields.io/github/package-json/v/ChainRoster/chainroster)](https://github.com/ChainRoster/chainroster/blob/master/package.json)
 [![License: ISC](https://img.shields.io/badge/license-ISC-blue.svg)](#license)
 
 A desktop application for managing crypto addresses and monitoring their on-chain activity — EVM chains plus Bitcoin, Bitcoin Cash, Solana, Tron, Cardano, XRP, Dogecoin, Zcash, Monero, NEAR, Sui, Stellar, and Hedera.
 
-![EVM Address Book showing a 2016-entry book with Bitcoin, Solana, Tron, and EVM addresses](docs/screenshot.png)
+![ChainRoster showing a 2016-entry book with Bitcoin, Solana, Tron, and EVM addresses](docs/screenshot.png)
 
 ## Features
 
@@ -98,6 +98,8 @@ Other environment variables:
 
 ### CLI
 
+Packaged installs provide the CLI as `chainroster` (the Linux .deb also installs an `evmaddressbook` alias). From a source checkout:
+
 ```bash
 # List saved addresses
 npm run build && node out/main/index.js --addresses
@@ -123,7 +125,7 @@ node out/main/index.js --data-dir
 
 ## Data Storage
 
-Data is stored as JSON files in a platform-specific directory:
+Data is stored as JSON files in a platform-specific directory. The folder and the `EVMADDRESSBOOK_*` environment variables keep the project's former name (EVM Address Book) so existing data and integrations keep working.
 
 | OS | Path |
 |----|------|
