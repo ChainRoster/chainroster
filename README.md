@@ -78,6 +78,8 @@ npm run dist:win     # NSIS installer + portable exe
 
 Output goes to `release/`. Each platform should be built on its native OS.
 
+Signed releases (macOS notarized in CI, Windows signed with Certum) are described in [docs/releasing.md](docs/releasing.md).
+
 ### Configuration
 
 The Etherscan API key can be set in the Settings tab or via environment variable:
