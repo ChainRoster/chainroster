@@ -4,6 +4,7 @@ import StatusBar from './components/StatusBar'
 import AddressesScreen from './components/addresses/AddressesScreen'
 import ChainsScreen from './components/chains/ChainsScreen'
 import SettingsScreen from './components/settings/SettingsScreen'
+import UpdateLayer from './components/UpdateLayer'
 
 const TABS = ['Addresses', 'Chains', 'Settings']
 
@@ -19,6 +20,7 @@ export default function App() {
         {activeTab === 'Settings' && <SettingsScreen />}
       </div>
       <StatusBar />
+      <UpdateLayer />
     </div>
   )
 }

@@ -45,6 +45,24 @@ contextBridge.exposeInMainWorld('api', {
   getZoom: () => ipcRenderer.invoke('zoom:get'),
   setZoom: (factor) => ipcRenderer.invoke('zoom:set', factor),
 
+  // Updates
+  updateStatus: () => ipcRenderer.invoke('update:status'),
+  updateSetPref: (pref) => ipcRenderer.invoke('update:setPref', pref),
+  updateCheck: () => ipcRenderer.invoke('update:check'),
+  updateDownload: () => ipcRenderer.invoke('update:download'),
+  updateInstall: () => ipcRenderer.invoke('update:install'),
+  updateOpenRelease: () => ipcRenderer.invoke('update:openRelease'),
+  onUpdateState: (callback) => {
+    const handler = (_event, data) => callback(data)
+    ipcRenderer.on('update:state', handler)
+    return () => ipcRenderer.removeListener('update:state', handler)
+  },
+  onShowUpdates: (callback) => {
+    const handler = () => callback()
+    ipcRenderer.on('update:show', handler)
+    return () => ipcRenderer.removeListener('update:show', handler)
+  },
+
   // Dialog
   openDirectoryDialog: () => ipcRenderer.invoke('dialog:openDirectory'),
 
