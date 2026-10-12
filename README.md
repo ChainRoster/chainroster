@@ -27,6 +27,7 @@ A desktop application for managing crypto addresses and monitoring their on-chai
 - **Chain Management** — View supported chains, edit RPC URLs, auto-fetch from chainlist.org
 - **Anytype Sync** — Two-way sync of address books with [Anytype](https://anytype.io) collections
 - **Chain Icons** — Visual chain identifiers with fallback letter icons
+- **In-App Updates** — Opt-in updates from GitHub Releases: nothing is checked, downloaded or installed until you say so
 - **Dark Theme** — Purpose-built dark UI
 
 ## Tech Stack

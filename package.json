@@ -105,6 +105,7 @@
   "license": "ISC",
   "dependencies": {
     "@vitejs/plugin-react": "^5.1.4",
+    "electron-updater": "^6.8.10",
     "electron-vite": "^5.0.0",
     "ethers": "^6.16.0",
     "evm-ui": "file:../evm-ui",

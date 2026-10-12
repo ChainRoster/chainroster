@@ -32,8 +32,18 @@ export const IPC = {
   ANYTYPE_SYNC_BOOK: 'anytype:syncBook',
   ANYTYPE_LIST_COLLECTIONS: 'anytype:listCollections',
   ANYTYPE_IMPORT_BOOK: 'anytype:importBook',
-  ANYTYPE_SYNCED: 'anytype:synced'
+  ANYTYPE_SYNCED: 'anytype:synced',
+  UPDATE_STATUS: 'update:status',
+  UPDATE_SET_PREF: 'update:setPref',
+  UPDATE_CHECK: 'update:check',
+  UPDATE_DOWNLOAD: 'update:download',
+  UPDATE_INSTALL: 'update:install',
+  UPDATE_OPEN_RELEASE: 'update:openRelease',
+  UPDATE_STATE: 'update:state',
+  UPDATE_SHOW: 'update:show'
 }
+
+export const RELEASES_URL = 'https://github.com/ChainRoster/chainroster/releases'
 
 export const ANYTYPE_POLL_INTERVAL_MS = 10000
 

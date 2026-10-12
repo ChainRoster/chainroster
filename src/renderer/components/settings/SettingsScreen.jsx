@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Input, EmptyState } from 'evm-ui'
 import useSettings from '../../hooks/useSettings'
+import UpdatesSection from './UpdatesSection'
 
 // Key/show/save row for the optional provider API keys.
 function OptionalKeySection({ title, blurb, placeholder, settingKey, settings, update }) {
@@ -194,6 +195,8 @@ export default function SettingsScreen() {
           </div>
         )}
       </div>
+
+      <UpdatesSection />
     </div>
   )
 }

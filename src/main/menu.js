@@ -1,4 +1,5 @@
 import { app, Menu, dialog, BrowserWindow } from 'electron'
+import { showUpdates } from './updates'
 
 const APP_NAME = 'ChainRoster'
 
@@ -17,7 +18,8 @@ function showAbout() {
 }
 
 // Builds a consistent application menu across platforms. The Help menu always
-// contains a single "About" item that shows the program name and version.
+// contains "Check for Updates…" and an "About" item that shows the program
+// name and version.
 export function createAppMenu() {
   const isMac = process.platform === 'darwin'
 
@@ -28,6 +30,7 @@ export function createAppMenu() {
       label: app.name,
       submenu: [
         { label: `About ${APP_NAME}`, click: showAbout },
+        { label: 'Check for Updates…', click: showUpdates },
         { type: 'separator' },
         { role: 'services' },
         { type: 'separator' },
@@ -80,6 +83,8 @@ export function createAppMenu() {
   template.push({
     label: 'Help',
     submenu: [
+      { label: 'Check for Updates…', click: showUpdates },
+      { type: 'separator' },
       { label: 'About', click: showAbout }
     ]
   })

@@ -4,6 +4,7 @@ import { handleCli } from './cli'
 import { registerIpcHandlers } from './ipc-handlers'
 import { createAppMenu } from './menu'
 import { startAnytypePolling } from './anytype-poll'
+import { startUpdates } from './updates'
 
 const cliFlags = ['--help', '-h', '--version', '-v', '--addresses', '--chains', '--list-books', '--scan', '--rescan', '--abi', '--data-dir']
 const isCliMode = process.argv.some(a => cliFlags.includes(a))
@@ -69,6 +70,7 @@ if (cliResult && typeof cliResult.then === 'function') {
     createAppMenu()
     createWindow()
     startAnytypePolling()
+    startUpdates()
 
     app.on('activate', () => {
       if (BrowserWindow.getAllWindows().length === 0) createWindow()

@@ -10,7 +10,7 @@ uploaded to the same draft. Nothing is public until you publish the draft.
 change it.
 
 Each build also writes `latest*.yml` and `.blockmap` files (from `build.publish` in
-`package.json`). They are the update feed for auto-update.
+`package.json`). They are the update feed; see [Updates](#updates).
 
 ## One-time setup
 
@@ -87,9 +87,47 @@ installs updates signed by it.
    prints the `gh release upload` command for them, the installer's blockmap and
    `latest.yml`. Run that command.
 4. Download the draft's installers and smoke-test them on each OS.
-5. Check the draft has all three `latest*.yml` files, then publish it.
+5. Check the draft has all three `latest*.yml` files, then publish it. Publishing is
+   what makes the release visible to installed copies (see below).
 
 To pull a bad release, unpublish it and ship a higher version.
+
+## Updates
+
+Installed copies update from GitHub Releases through electron-updater
+(`src/main/update-service.js`, wired up in `src/main/updates.js`). Nothing happens
+without the user:
+
+- On first launch the app asks whether to check daily. Until they answer, nothing
+  is checked. Settings → Updates changes the answer (stored as `updateCheck` in
+  `settings.json`); Check for Updates… in the app menu (macOS) or Help menu checks
+  once, whatever the setting.
+- A found update is only shown. The installer is downloaded when the user clicks
+  Download, and installed when they click Restart and install.
+- `.deb` installs can't update themselves (electron-updater could only do it via an
+  unauthenticated pkexec/sudo), so they get a link to the release page. AppImage,
+  macOS and the Windows installer update in place. The portable Windows exe does
+  not update itself.
+
+What the updater reads, and what that means for releasing:
+
+- **Only published releases.** A draft is invisible to it, so a release goes out
+  when you publish it, not when you tag it. The latest non-prerelease release wins.
+- **`latest-mac.yml`, `latest.yml`, `latest-linux.yml`.** A platform whose file is
+  missing gets an error instead of the update, so the Windows upload (step 3) must
+  land before publishing. Both macOS architectures come from one job, so one
+  `latest-mac.yml` lists both.
+- **Signatures.** macOS installs an update only if it is signed with the same
+  Developer ID; Windows only if the signer matches `publisherName`. Never change
+  `appId`, the Developer ID team or the Certum CN casually; doing so strands
+  installed copies on the old version.
+
+To try the flow without publishing anything, point an unpackaged run at a local
+feed: serve a directory containing a `latest-linux.yml` (or `latest-mac.yml`) for a
+higher version, then `CHAINROSTER_UPDATE_FEED=http://127.0.0.1:8765 npx electron .`
+after `npm run build`, and use Check for Updates…. On Linux also set
+`APPIMAGE` to any path, or the updater treats the run as a non-updatable install.
+The variable is ignored by packaged builds.
 
 ## Checking a build without releasing
 
