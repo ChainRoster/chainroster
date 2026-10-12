@@ -39,6 +39,7 @@
       "icon": "build/icon.png"
     },
     "mac": {
+      "executableName": "ChainRoster",
       "target": [
         {
           "target": "dmg",
